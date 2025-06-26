@@ -1,63 +1,140 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-image: url("TO DO LIST IMG.jpg"); /* 🔁 Your image filename here */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+  color: #333;
+}
+
+/* Optional dark-mode override */
+body.dark-mode {
+  background-color: #121212;
+  background-image: none; /* Optional: remove image in dark mode */
+  color: #f0f0f0;
 }
 
 .todo-container {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.92);  /* ✅ Transparent white background */
+  backdrop-filter: blur(8px);            /* ✅ Glassmorphism effect */
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+  transition: background 0.3s ease;
 }
 
-h2 {
-  margin-bottom: 1rem;
+/* Rest of your CSS below this point (unchanged from previous version) */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 input[type="text"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
 }
 
 button {
-  padding: 0.5rem 1rem;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  padding: 10px 15px;
   cursor: pointer;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.2s;
 }
 
-ul {
-  list-style: none;
+button:hover {
+  background-color: #2980b9;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#todo-list {
+  margin-top: 20px;
+  list-style-type: none;
   padding: 0;
 }
 
-li {
-  padding: 0.5rem;
-  background: #e9ecef;
-  margin-bottom: 0.5rem;
+#todo-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 4px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.delete {
-  background: red;
-  border: none;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
+.task-text {
+  flex: 1;
   cursor: pointer;
+}
+
+.completed .task-text {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  color: #e74c3c;
+}
+
+.clear-btn {
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 5px;
+}
+
+body.dark-mode .todo-container {
+  background: rgba(30, 30, 30, 0.95);
+  color: #f0f0f0;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode button {
+  background-color: #1f1f1f;
+  color: white;
+  border: 1px solid #444;
+}
+
+body.dark-mode .task-text {
+  color: #f0f0f0;
+}
+
+body.dark-mode .edit-btn,
+body.dark-mode .delete-btn {
+  color: #ccc;
+}
+
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  input[type="text"], button {
+    width: 100%;
+  }
 }
